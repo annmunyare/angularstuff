@@ -18,7 +18,7 @@ class FlowController extends Controller
     }
 
     
-    public function getState()
+    public function store()
     {
         $client = new Client();
         $response = $client->request('GET', 'https://nanyukiafann-stuff.azurewebsites.net/api/v1/flows', [
@@ -63,11 +63,11 @@ class FlowController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
-    {
-        //
-         return $request;
-    }
+    // public function store(Request $request)
+    // {
+    //     //
+    //      return $request;
+    // }
 
     /**
      * Display the specified resource.
