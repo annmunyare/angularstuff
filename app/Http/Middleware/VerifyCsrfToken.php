@@ -20,5 +20,9 @@ class VerifyCsrfToken extends Middleware
      */
     protected $except = [
         //
+       'https://nanyukiafann-stuff.azurewebsites.net/api/v1/flows',
+        'http://*',
+        'http://example.com/foo/*',
+        'https://nanyukiafann-stuff.azurewebsites.net/*'
     ];
 }
