@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-
+use GuzzleHttp\Client;
 
 class FlowController extends Controller
 {
@@ -15,6 +15,36 @@ class FlowController extends Controller
     public function index()
     {
         //
+    }
+
+    
+    public function getState()
+    {
+        $client = new Client();
+        $response = $client->request('GET', 'https://nanyukiafann-stuff.azurewebsites.net/api/v1/flows', [
+            'headers' => 
+            [
+                'Accept' => 'application/json',
+                'Content-type' => 'application/json'
+            ]
+        ]);
+        $body = $response->getBody();
+        $content =$body->getContents();
+        $arr = json_decode($content,TRUE);
+           return $content;
+        // return $arr['groupName'];
+        foreach($arr as $obj )
+        {
+            
+            // return $obj;
+            
+         
+         }
+     
+
+       
+     
+        
     }
 
     /**
