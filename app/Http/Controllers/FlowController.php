@@ -21,22 +21,20 @@ class FlowController extends Controller
     }
 
     
-    public function getstate(Request $request)
-    {
-        $client = new Client();
-        $response = $client->request('GET', 'https://nanyukiafann-stuff.azurewebsites.net/api/v1/flows', [
-            'headers' => 
-            [
-                'Accept' => 'application/json',
-                'Content-type' => 'application/json'
-            ]
-        ]);
-        $body = $response->getBody();
-        $content =$body->getContents();
-        $arr = json_decode($content,TRUE);
     
-        $name= $arr['name'];
-        $total= $arr['total'];
+    public function store(Request $request)
+    {
+        $json = file_get_contents("php://input");
+        $array = json_decode($json, true);
+
+        if(is_array($array)&& (count($array) > 0 ))
+        {
+            $name = $array[0]["name"];
+            $total = $array[0]["total"];
+        
+        }
+    
+
   
         Flow::create(
             array(
