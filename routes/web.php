@@ -24,7 +24,4 @@ Route::group(['prefix' => 'api/v1'], function() {
 
     Route::resource('category', 'CategoryController');
    });
-   Route::group(['prefix' => 'api/v1'], function() {
-
-    Route::resource('flows', 'FlowController');
-   });
+   Route::get('/sent',  'FlowController@getstate');

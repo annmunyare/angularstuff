@@ -4,6 +4,9 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use GuzzleHttp\Client;
+use App\Flow;
+use Response;
+
 
 class FlowController extends Controller
 {
@@ -12,49 +15,57 @@ class FlowController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function create()
     {
         //
     }
 
     
-    public function store()
-    {
-        $client = new Client();
-        $response = $client->request('GET', 'https://nanyukiafann-stuff.azurewebsites.net/api/v1/flows', [
-            'headers' => 
-            [
-                'Accept' => 'application/json',
-                'Content-type' => 'application/json'
-            ]
-        ]);
-        $body = $response->getBody();
-        $content =$body->getContents();
-        $arr = json_decode($content,TRUE);
-           return $content;
-        // return $arr['groupName'];
-        foreach($arr as $obj )
-        {
+    // public function getstate(Request $request)
+    // {
+    //     $client = new Client();
+    //     $response = $client->request('GET', 'https://nanyukiafann-stuff.azurewebsites.net/api/v1/flows', [
+    //         'headers' => 
+    //         [
+    //             'Accept' => 'application/json',
+    //             'Content-type' => 'application/json'
+    //         ]
+    //     ]);
+    //     $body = $response->getBody();
+    //     $content =$body->getContents();
+    //     $arr = json_decode($content,TRUE);
+    //     //    return $content;
+    //        dd($arr);
+    //     // return $arr['groupName'];
+    //     foreach($arr as $obj )
+    //     {
             
-            // return $obj;
+    //         // return $obj;
             
          
-         }
+    //      }
      
 
        
      
         
-    }
+    // }
 
     /**
      * Show the form for creating a new resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function index(Request $request)
     {
         //
+   
+     $flow = new Flow($request->all());
+
+     $flow->save();
+     
+     return Response::json($flow);
+    
     }
 
     /**
