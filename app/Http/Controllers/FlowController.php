@@ -21,52 +21,50 @@ class FlowController extends Controller
     }
 
     
-    // public function getstate(Request $request)
-    // {
-    //     $client = new Client();
-    //     $response = $client->request('GET', 'https://nanyukiafann-stuff.azurewebsites.net/api/v1/flows', [
-    //         'headers' => 
-    //         [
-    //             'Accept' => 'application/json',
-    //             'Content-type' => 'application/json'
-    //         ]
-    //     ]);
-    //     $body = $response->getBody();
-    //     $content =$body->getContents();
-    //     $arr = json_decode($content,TRUE);
-    //     //    return $content;
-    //        dd($arr);
-    //     // return $arr['groupName'];
-    //     foreach($arr as $obj )
-    //     {
-            
-    //         // return $obj;
-            
-         
-    //      }
-     
+    public function getstate(Request $request)
+    {
+        $client = new Client();
+        $response = $client->request('GET', 'https://nanyukiafann-stuff.azurewebsites.net/api/v1/flows', [
+            'headers' => 
+            [
+                'Accept' => 'application/json',
+                'Content-type' => 'application/json'
+            ]
+        ]);
+        $body = $response->getBody();
+        $content =$body->getContents();
+        $arr = json_decode($content,TRUE);
+    
+        $name= $arr['name'];
+        $total= $arr['total'];
+  
+        Flow::create(
+            array(
+          'name'=>$name,
+            'total'=>$total,
+            ));
 
        
      
         
-    // }
+    }
 
     /**
      * Show the form for creating a new resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(Request $request)
-    {
-        //
+    // public function index(Request $request)
+    // {
+    //     //
    
-     $flow = new Flow($request->all());
+    //  $flow = new Flow($request->all());
 
-     $flow->save();
+    //  $flow->save();
      
-     return Response::json($flow);
+    //  return Response::json($flow);
     
-    }
+    // }
 
     /**
      * Store a newly created resource in storage.
