@@ -7,4 +7,6 @@ use Illuminate\Database\Eloquent\Model;
 class Flow extends Model
 {
     //
+    protected $guarded = [];
+
 }
