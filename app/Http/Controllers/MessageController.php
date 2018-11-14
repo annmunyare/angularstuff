@@ -47,12 +47,13 @@ class MessageController extends Controller
     public function store(Request $request)
     {
       
-      $contacts = Contact::all();
+      $contacts = Contact::where('id', '<', 4);
         
         $username = 'sandbox'; // use 'sandbox' for development in the test environment
         $apiKey   = '013cc9a74301e0f98fbcc495def5b92294627c2db03e428db32b0cb30782f83d'; // use your sandbox app API key for development in the test environment
         $AT = new AfricasTalking($username, $apiKey);
-        return "HH";
+        // return "HH";
+
 
         // Get one of the services
         $sms = $AT->sms();
