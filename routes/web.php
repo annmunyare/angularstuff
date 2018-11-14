@@ -29,10 +29,10 @@ Route::group(['prefix' => 'api/v1'], function() {
    //Routes for message
 Route::get('/messages',  'MessageController@index');
 Route::get('/messages/create',  'MessageController@create');
-Route::post('/messages',  'MessageCController@store');
-Route::get('/messages/edit/{id}',  'MessageCController@edit');
-Route::patch('/messages/{id}',  'MessageCController@update');
-Route::get('/messages/delete/{id}',  'MessageCController@destroy');
+Route::post('/messages',  'MessageController@store');
+Route::get('/messages/edit/{id}',  'MessageController@edit');
+Route::patch('/messages/{id}',  'MessageController@update');
+Route::get('/messages/delete/{id}',  'MessageController@destroy');
 
 Route::get('/reports',  'ReportController@index');
 // Route::get('/wts',  array( 'middleware' => 'cors','uses' =>  'MessageController@store'));
