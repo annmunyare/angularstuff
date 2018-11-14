@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use AfricasTalking\SDK\AfricasTalking;
 use App\Jobs\SendSMSMessages;
 use App\Contact;
+use Response;
 
 class MessageController extends Controller
 {
@@ -45,7 +46,7 @@ class MessageController extends Controller
                     'to'      => $contact->mobilenumber,
                     'message' => $message
                 ]);
-                    return $result;
+               echo Response::json($result);
             } catch (Exception $e) {
                 echo "Error: ".$e.getMessage();
             }
