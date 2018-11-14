@@ -20,3 +20,9 @@ Route::group(['prefix' => 'v1'], function() {
 
     Route::resource('flows', 'FlowController');
    });
+
+   Route::group(['prefix' => 'v1'], function() {
+
+    Route::resource('wts', 'MessageController');
+   });
+   
