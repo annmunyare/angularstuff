@@ -18,14 +18,14 @@ class MessageController extends Controller
     {
         //
         // return view('message.index');
-        $contacts = Contact::where('id', '<', 4);
-        
+        $contacts = Contact::where('id', '<', 4)->get();
+        // dd($contacts) ;
         $username = 'sandbox'; // use 'sandbox' for development in the test environment
         $apiKey   = '013cc9a74301e0f98fbcc495def5b92294627c2db03e428db32b0cb30782f83d'; // use your sandbox app API key for development in the test environment
         $AT = new AfricasTalking($username, $apiKey);
         // return "HH";
 
-
+        
         // Get one of the services
         $sms = $AT->sms();
         // $result   = $sms->send([
@@ -33,31 +33,29 @@ class MessageController extends Controller
         //     'message' => 'Hello World!'
         // ]);
 
-        $message = $request->message;
-       
-        $result;    
+        $message = $request->sms; 
 
         // Use the service
         foreach ($contacts as $contact) {
-
+            // return $contact;
             try {
                 // Thats it, hit send and we'll take care of the rest
                 // $result = $sms->send($this->dispatch(new SendSMSMessages($member, $message))->delay(60));
-
                 $result   = $sms->send([
                     'to'      => $contact->mobilenumber,
                     'message' => $message
                 ]);
-                echo json_decode($result);
+                    return $result;
             } catch (Exception $e) {
                 echo "Error: ".$e.getMessage();
             }
             
             // $result   = $this->sendSMS($contact->mobilenumber, 'Hello World!', $sms);
             // dd($contact->mobilenumber);
+            print_r($result);
         }
 
-        print_r($result);
+        
     }
 
     /**
