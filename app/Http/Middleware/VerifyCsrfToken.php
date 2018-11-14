@@ -23,6 +23,7 @@ class VerifyCsrfToken extends Middleware
        'https://nanyukiafann-stuff.azurewebsites.net/api/v1/flows',
         'http://*',
         'http://example.com/foo/*',
-        'https://nanyukiafann-stuff.azurewebsites.net/*'
+        'https://nanyukiafann-stuff.azurewebsites.net/*',
+        'http://localhost:3000'
     ];
 }
