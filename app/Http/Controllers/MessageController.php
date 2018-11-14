@@ -35,7 +35,7 @@ class MessageController extends Controller
 
         $message = $request->message;
        
-
+        $result;    
 
         // Use the service
         foreach ($contacts as $contact) {
