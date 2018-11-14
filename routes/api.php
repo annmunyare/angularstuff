@@ -21,8 +21,9 @@ Route::group(['prefix' => 'v1'], function() {
     Route::resource('flows', 'FlowController');
    });
 
-   Route::group(['prefix' => 'v1'], function() {
+//    Route::group(['prefix' => 'v1'], function() {
 
-    Route::resource('wts', 'MessageController');
-   });
+//     Route::resource('wts', 'MessageController');
+//    });
+Route::get(['prefix' => 'v1'], '/wts',  'MessageCController@store');
    
