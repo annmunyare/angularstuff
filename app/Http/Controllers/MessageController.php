@@ -106,6 +106,10 @@ class MessageController extends Controller
             // $result   = $this->sendSMS($contact->mobilenumber, 'Hello World!', $sms);
             // dd($contact->mobilenumber);
             // print_r($result);
+            $responsed = [
+                'status' =>$status
+            ];
+            return response()->json($responsed, 200);
         }
 
         
