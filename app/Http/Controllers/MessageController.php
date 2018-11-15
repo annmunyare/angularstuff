@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use AfricasTalking\SDK\AfricasTalking;
 use App\Jobs\SendSMSMessages;
 use App\Contact;
+use App\Status;
+use App\Message;
 use Response;
 
 class MessageController extends Controller
@@ -24,18 +26,25 @@ class MessageController extends Controller
         $username = 'sandbox'; // use 'sandbox' for development in the test environment
         $apiKey   = '013cc9a74301e0f98fbcc495def5b92294627c2db03e428db32b0cb30782f83d'; // use your sandbox app API key for development in the test environment
         $AT = new AfricasTalking($username, $apiKey);
-        // return "HH";
-
-        
+       
         // Get one of the services
         $sms = $AT->sms();
-        // $result   = $sms->send([
-        //     'to'      => '+254713624254',
-        //     'message' => 'Hello World!'
-        // ]);
+    //    dd( $application = $AT->application());
+   
 
         $message = $request->sms; 
 
+        $mess = new Message();
+        $mess->name = $message;
+        $mess->save();
+        
+        // Message::create(
+        //     array(
+        //   'name'=>$message,
+        
+        //     ));
+        //     $message_id=
+        $response = Array();
         // Use the service
         foreach ($contacts as $contact) {
             // return $contact;
@@ -46,14 +55,57 @@ class MessageController extends Controller
                     'to'      => $contact->mobilenumber,
                     'message' => $message
                 ]);
-               echo Response::json($result);
+                
+                
+          
+               $array = json_encode($result, true);
+               $js = json_decode($array);
+               if($js->status == 'success')
+               {
+                $status=1;
+               }
+               elseif ($js->status == 'failed') {
+                $status=2;
+               }
+               else{
+                $status=3;
+               }
+               
+               
+               $data = $js->data;
+               $rec = $data->SMSMessageData->Recipients;
+               $number = $rec[0]->number;
+               $cost =  $rec[0]->cost;
+               $c = $rec[0]->cost;
+                $len = strlen($c);
+                $pos = strpos($c, 'S');
+                $cost =  $rec[0]->cost;
+                $k = substr($cost, $pos + 2, $len - $pos);
+            //    echo $status;
+            //    echo $number;
+            //    echo $cost;
+               $contact_id=$contact->id;
+
+               Status::create(
+                array(
+              'status'=>$status,
+                'send_status_cost'=>$k,
+                'bal_before_send' => 100,
+                'message_id' =>$mess->id,
+                'contact_id' =>$contact_id
+                ));
+
+                $response['status'] = $status;
+
+                echo json_encode($response);
+              
             } catch (Exception $e) {
                 echo "Error: ".$e.getMessage();
             }
             
             // $result   = $this->sendSMS($contact->mobilenumber, 'Hello World!', $sms);
             // dd($contact->mobilenumber);
-            print_r($result);
+            // print_r($result);
         }
 
         

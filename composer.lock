@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "921744df64e1bc8b45f86232ed55ab3b",
+    "content-hash": "8270b6063da958dba105d68fa35ff5b9",
     "packages": [
         {
             "name": "africastalking/africastalking",
@@ -317,6 +317,57 @@
                 "validator"
             ],
             "time": "2018-09-25T20:47:26+00:00"
+        },
+        {
+            "name": "ejimba/africas-talking-gateway",
+            "version": "v1.0.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/Ejimba/africas-talking-gateway.git",
+                "reference": "916e93c5a810f1cfc92ea827ad091eb8ca7b9e20"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/Ejimba/africas-talking-gateway/zipball/916e93c5a810f1cfc92ea827ad091eb8ca7b9e20",
+                "reference": "916e93c5a810f1cfc92ea827ad091eb8ca7b9e20",
+                "shasum": ""
+            },
+            "require": {
+                "ext-curl": "*",
+                "php": ">=5.3.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "AfricasTalkingGateway\\": "src/AfricasTalkingGateway"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "proprietary"
+            ],
+            "authors": [
+                {
+                    "name": "Ejimba Eric",
+                    "email": "ejimba@gmail.com",
+                    "homepage": "http://www.ejimbaeric.com",
+                    "role": "Developer"
+                }
+            ],
+            "description": "Unofficial Africas Talking Gateway for PHP",
+            "homepage": "https://www.africastalking.com/",
+            "keywords": [
+                "africa",
+                "api",
+                "gateway",
+                "kenya",
+                "php",
+                "sms",
+                "talking",
+                "ussd",
+                "voice"
+            ],
+            "time": "2015-10-24T18:00:54+00:00"
         },
         {
             "name": "erusev/parsedown",
