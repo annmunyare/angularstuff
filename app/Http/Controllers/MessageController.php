@@ -71,7 +71,7 @@ class MessageController extends Controller
 
             $responsed = array();
             for ($m = 0; $m < count($batch_result); $m++) {
-                var_dump($batch_result[0]);
+               // var_dump($batch_result[0]);
                 $array = json_encode($batch_result[$m]);
                $js = json_decode($array);
                if($js->status == 'success')
