@@ -97,7 +97,7 @@ class MessageController extends Controller
 
                 $response['status'] = $status;
 
-                echo json_encode($response);
+                print_r($response);
               
             } catch (Exception $e) {
                 echo "Error: ".$e.getMessage();
