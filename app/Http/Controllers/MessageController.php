@@ -97,7 +97,7 @@ class MessageController extends Controller
 
                 $response = Array('status'=>$status);
 
-                print_r($response);
+                // print_r($response);
               
             } catch (Exception $e) {
                 echo "Error: ".$e.getMessage();
@@ -109,8 +109,9 @@ class MessageController extends Controller
             $responsed = [
                 'status' =>$status
             ];
-            return response()->json($responsed, 200);
+           
         }
+        return response()->json($responsed, 200);
 
         
     }
