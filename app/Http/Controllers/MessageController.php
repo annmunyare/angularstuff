@@ -95,7 +95,7 @@ class MessageController extends Controller
                 'contact_id' =>$contact_id
                 ));
 
-                $response['status'] = $status;
+                $response = Array('status'=>$status);
 
                 print_r($response);
               
