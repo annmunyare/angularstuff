@@ -44,7 +44,7 @@ class MessageController extends Controller
         
         //     ));
         //     $message_id=
-        $response = Array();
+        $responsed = Array();
         // Use the service
         foreach ($contacts as $contact) {
             // return $contact;
@@ -106,11 +106,12 @@ class MessageController extends Controller
             // $result   = $this->sendSMS($contact->mobilenumber, 'Hello World!', $sms);
             // dd($contact->mobilenumber);
             // print_r($result);
-            $responsed []=  'status' ->$status;
+            $responsed [] =  '{"status":'. $status . '}';
+            // print_r( response()->json($responsed, 200));
            
         }
-        return response()->json($responsed, 200);
-
+    
+        return $responsed;
         
     }
 
