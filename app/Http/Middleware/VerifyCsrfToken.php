@@ -24,6 +24,9 @@ class VerifyCsrfToken extends Middleware
         'http://*',
         'http://example.com/foo/*',
         'https://nanyukiafann-stuff.azurewebsites.net/*',
-        'http://localhost:3000'
+        'http://localhost:3000',
+        'api/*',
+        '/wts'
+        
     ];
 }
