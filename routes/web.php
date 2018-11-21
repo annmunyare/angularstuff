@@ -35,6 +35,6 @@ Route::patch('/messages/{id}',  'MessageController@update');
 Route::get('/messages/delete/{id}',  'MessageController@destroy');
 
 Route::get('/reports',  'ReportController@index');
-Route::get('/wts',  array( 'middleware' => 'cors','uses' =>  'MessageController@index'));
+// Route::get('/wts',  array( 'middleware' => 'cors','uses' =>  'MessageController@index'));
 // Route::get('/wts',  'MessageController@store');
 

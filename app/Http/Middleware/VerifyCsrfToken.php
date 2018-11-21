@@ -26,7 +26,8 @@ class VerifyCsrfToken extends Middleware
         'https://nanyukiafann-stuff.azurewebsites.net/*',
         'http://localhost:3000',
         'api/*',
-        '/wts'
+        '/wts',
+        'https://powerful-hamlet-82891.herokuapp.com/*'
         
     ];
 }
