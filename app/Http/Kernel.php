@@ -44,6 +44,7 @@ class Kernel extends HttpKernel
             'throttle:60,1',
             'bindings',
             '\Barryvdh\Cors\HandleCors::class',
+           
         ],
     ];
 
@@ -64,7 +65,7 @@ class Kernel extends HttpKernel
         'signed' => \Illuminate\Routing\Middleware\ValidateSignature::class,
         'throttle' => \Illuminate\Routing\Middleware\ThrottleRequests::class,
         'verified' => \Illuminate\Auth\Middleware\EnsureEmailIsVerified::class,
-        'cors' => \Barryvdh\Cors\HandleCors::class,
+    
     ];
 
     /**
