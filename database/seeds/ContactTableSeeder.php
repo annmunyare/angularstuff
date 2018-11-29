@@ -12,7 +12,7 @@ class ContactTableSeeder extends Seeder
     public function run()
     {
         //
-        factory(App\Contact::class, 700)->create()->each(function($contact){
+        factory(App\Contact::class, 50000)->create()->each(function($contact){
             $contact->save();
             });
     }
